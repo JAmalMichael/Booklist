@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/68edde0d33.js" crossorigin="anonymous"></script>
-    <title>Booklist</title>
+    <title>Animelist</title>
 </head>
 <body>
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+    <header>
+        <div class="flex items-center justify-center text-center mx-auto my-5 text-3xl">
+            <i class="fa-solid fa-tv"></i>
+            <h1 class=" ml-2">My<span class="text-blue-700">Anime</span>List</h1>
+    </div>
+    <form id="book-form" class="text-sm ">
+        <div class="flex flex-col mx-2 my-2 ">
+                <label for="title">Title</label>
+                <input  type="text" id="title"/ class="border ">
+        </div>
+        <div>
+                    <label for="genre">Genre</label>
+                 <input  type="text" id="genre"/>
+        </div>
+        <div>
+                    <label for="main-act">Main Act</label>
+                 <input  type="text" id="main-act"/>
+        </div>
+        <div>
+            <input type="submit" value="Add-book" class="bg-blue-700 "/>
+        </div>
+    </form>
+    </header>
 </body>
 </html>
