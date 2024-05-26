@@ -8,20 +8,7 @@ class Anime {
 
 class UI {
     static displayAnime() {
-        const storedAnimes = [
-            {
-                title: 'Naruto',
-                genre: 'Shinobi',
-                main_act: 'Jiraiya'
-            },
-            {
-                title: 'Attack on Titan',
-                genre: 'Mystery and Adventure',
-                main_act: 'Eren Jeager'
-            }
-        ];
-
-        const animes = storedAnimes;
+        const animes = Store.getAnime();
 
         animes.forEach((anime) => {
                 UI.addAnimeToList(anime)
@@ -79,6 +66,36 @@ class UI {
 
 }
 
+        class Store {
+            static getAnime() {
+                let animes;
+                if(localStorage.getItem('animes') === null) {
+                        animes = [];
+                } else {
+                    animes = JSON.parse(localStorage.getItem('animes')) ;
+                }
+
+                return animes
+            }
+            
+            static addAnime(anime) {
+                const animes = Store.getAnime();
+                animes.push(anime);
+                localStorage.setItem('animes', JSON.stringify(animes));
+            }
+
+            static removeAnime(main_act) {
+                const animes = Store.getAnime();
+
+                animes.forEach((anime, index) => {
+                    if(anime.main_act === main_act) {
+                        animes.splice(index, 1);
+                    }
+                });
+                localStorage.setItem('animes', JSON.stringify(animes))
+            }
+        }
+
 
 // displaying books
 document.addEventListener("DOMContentLoaded", UI.displayAnime);
@@ -99,6 +116,9 @@ document.querySelector('#anime-form').addEventListener('submit', (e) => {
 
      UI.addAnimeToList(anime);
 
+     //adding anime to store
+        Store.addAnime(anime);
+
      UI.showAlert2('Anime Added', 'success');
     
      UI.clearFields();
@@ -108,7 +128,11 @@ document.querySelector('#anime-form').addEventListener('submit', (e) => {
 });
 
 document.querySelector('#anime-list').addEventListener('click', (e) => {
+
+    //delting anime from UI
     UI.deleteAnime(e.target);
+
+    Store.removeAnime(e.target.parentElement.previousElementSibling.textContent);
 
 
     UI.showAlert2('Anime Removed', 'success');
