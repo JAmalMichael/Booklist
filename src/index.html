@@ -15,7 +15,7 @@
     </div>
     </header> 
     <section>  
-    <form id="book-form" class="text-sm ">
+    <form id="anime-form" class="text-sm ">
         <div class="flex flex-col mx-2 my-2 ">
                 <label for="title">Title</label>
                 <input  type="text" id="title"/ class="border ">
@@ -29,20 +29,20 @@
                  <input  type="text" id="main-act" class="border "/>
         </div>
         <div class="flex items-center justify-center w-screen mt-4">
-            <input type="submit" value="Add-book"
+            <input type="submit" value="Add-Anime"
              class="bg-blue-700 text-center text-white rounded-sm w-[80%] p-2"/>
         </div>
     </form>
     <table class="table-auto w-4/5 mt-4 mx-auto">
             <thead class="border border-t-2 border-b-2 border-r-0 w-[100%] border-l-0">
                 <tr>
-                    <th>Title</th>
+                    <th class="pl-0">Title</th>
                     <th>Genre</th>
                     <th>Main Act</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody id="book-list"></tbody>
+            <tbody id="anime-list"></tbody>
     </table>
     </section>
     <script src="main.js"></script>
